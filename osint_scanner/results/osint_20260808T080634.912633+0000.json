@@ -1,0 +1,101 @@
+{
+  "scan_timestamp": "2026-08-08T08:06:34.912633+00:00",
+  "domains": [
+    {
+      "domain": "instagram.com",
+      "whois": {
+        "registrar": "RegistrarSafe, LLC",
+        "creation_date": "2004-06-04 13:37:18+00:00",
+        "expiration_date": "2034-06-04 13:37:18+00:00",
+        "name_servers": [
+          "A.NS.INSTAGRAM.COM",
+          "B.NS.INSTAGRAM.COM",
+          "C.NS.INSTAGRAM.COM",
+          "D.NS.INSTAGRAM.COM"
+        ],
+        "emails": [
+          "abusecomplaints@registrarsafe.com",
+          "domain@fb.com"
+        ],
+        "error": "N/A"
+      },
+      "dns": {
+        "A": [
+          "57.144.48.34"
+        ],
+        "AAAA": [
+          "2a03:2880:f285:e7:face:b00c:0:4420"
+        ],
+        "MX": [
+          "10 mxa-00082601.gslb.pphosted.com.",
+          "10 mxb-00082601.gslb.pphosted.com."
+        ],
+        "NS": [
+          "c.ns.instagram.com.",
+          "d.ns.instagram.com.",
+          "b.ns.instagram.com.",
+          "a.ns.instagram.com."
+        ],
+        "TXT": [
+          "v=spf1 include:facebookmail.com include:_spf.fb.com -all",
+          "adobe-idp-site-verification=367fda82-a8bb-46cf-9cff-0062d452d229",
+          "hyWdekepiNsp/V9b1JCR+wZDdzbESurl4GqY+FLMfiN+7aeFaway0Art+kNDHeL5OnGZipNeV/iIC+lOONSQVQ==",
+          "_yvfspgyfwcjnwgopowc9qjme14c32od",
+          "facebook-domain-verification=hksvhmzcutq39t1kgpmlx11kt8314q",
+          "4cbb1b68-601f-4801-8e7f-e8f68a4a41dd",
+          "google-site-verification=GGtId51KFyq0hqX2xNvt1u0P9Xp0C7k6pp9do49fCNw",
+          "nEXgIFIbDifAKlSMQvAhly5SA-vpsAkm5wiOdwdkrzY",
+          "google-site-verification=_iQgLr68Rdg7YnN2PqOljSG5dnWOFUUXISF9R77fs5c",
+          "ms=ms86975275"
+        ],
+        "CNAME": [],
+        "SOA": "a.ns.instagram.com. dns.facebook.com. 4207849484 14400 1800 604800 3600",
+        "error": null
+      },
+      "geoip": {
+        "ip": "57.144.48.34",
+        "city": "Noida",
+        "region": "Uttar Pradesh",
+        "country": "India",
+        "lat": 28.5759,
+        "lon": 77.3345,
+        "isp": "Facebook, Inc.",
+        "org": "Facebook, Inc",
+        "as": "AS32934 Facebook, Inc.",
+        "error": "N/A"
+      },
+      "shodan": {
+        "ip": "57.144.48.34",
+        "ports": [],
+        "hostnames": [],
+        "vulns": [],
+        "org": "N/A",
+        "os": "N/A",
+        "error": "Shodan API key required"
+      },
+      "subdomains": {
+        "subdomains": [
+          "admin.instagram.com",
+          "api.instagram.com",
+          "blog.instagram.com",
+          "www.instagram.com"
+        ],
+        "sources": {
+          "crt_sh": [],
+          "brute_force": [
+            "www.instagram.com",
+            "admin.instagram.com",
+            "blog.instagram.com",
+            "api.instagram.com"
+          ]
+        },
+        "error": null
+      },
+      "leaks": {
+        "github_leaks": [],
+        "email_leaks": 0,
+        "error": null
+      }
+    }
+  ]
+}

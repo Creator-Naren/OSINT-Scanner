@@ -1,0 +1,16 @@
+www
+mail
+ftp
+admin
+blog
+shop
+api
+dev
+staging
+test
+vpn
+webmail
+portal
+cdn
+ns1
+ns2

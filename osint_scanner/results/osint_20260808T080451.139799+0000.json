@@ -1,0 +1,88 @@
+{
+  "scan_timestamp": "2026-08-08T08:04:51.139799+00:00",
+  "domains": [
+    {
+      "domain": "google.com",
+      "whois": {
+        "registrar": "MarkMonitor, Inc.",
+        "creation_date": "1997-09-15 04:00:00+00:00, 1997-09-15 07:00:00+00:00",
+        "expiration_date": "2028-09-14 04:00:00+00:00, 2028-09-13 07:00:00+00:00",
+        "name_servers": [
+          "NS1.GOOGLE.COM",
+          "NS2.GOOGLE.COM",
+          "NS3.GOOGLE.COM",
+          "NS4.GOOGLE.COM"
+        ],
+        "emails": [
+          "abusecomplaints@markmonitor.com",
+          "whoisrequest@markmonitor.com"
+        ],
+        "error": "N/A"
+      },
+      "dns": {
+        "A": [],
+        "AAAA": [],
+        "MX": [],
+        "NS": [],
+        "TXT": [],
+        "CNAME": [],
+        "SOA": "",
+        "error": "The resolution lifetime expired after 5.005 seconds: Server Do53:192.168.31.1@53 answered The DNS operation timed out."
+      },
+      "geoip": {
+        "ip": "142.250.122.139",
+        "city": "Mountain View",
+        "region": "California",
+        "country": "United States",
+        "lat": 37.4225,
+        "lon": -122.085,
+        "isp": "Google LLC",
+        "org": "Google LLC",
+        "as": "AS15169 Google LLC",
+        "error": "N/A"
+      },
+      "shodan": {
+        "ip": "142.250.122.139",
+        "ports": [],
+        "hostnames": [],
+        "vulns": [],
+        "org": "N/A",
+        "os": "N/A",
+        "error": "Shodan API key required"
+      },
+      "subdomains": {
+        "subdomains": [
+          "admin.google.com",
+          "api.google.com",
+          "blog.google.com",
+          "mail.google.com",
+          "ns1.google.com",
+          "ns2.google.com",
+          "shop.google.com",
+          "vpn.google.com",
+          "www.google.com"
+        ],
+        "sources": {
+          "crt_sh": [],
+          "brute_force": [
+            "www.google.com",
+            "mail.google.com",
+            "admin.google.com",
+            "blog.google.com",
+            "shop.google.com",
+            "api.google.com",
+            "vpn.google.com",
+            "ns1.google.com",
+            "ns2.google.com"
+          ]
+        },
+        "error": null
+      },
+      "leaks": {
+        "github_leaks": [],
+        "email_leaks": 0,
+        "error": null
+      }
+    }
+  ]
+}
