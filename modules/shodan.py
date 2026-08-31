@@ -4,8 +4,12 @@ import socket
 
 import requests
 
-from osint_scanner.config import RATE_LIMITS, TIMEOUT
-from osint_scanner.modules._utils import RateLimiter
+try:
+    from config import RATE_LIMITS, TIMEOUT
+    from modules._utils import RateLimiter, sanitize_domain
+except ImportError:
+    from osint_scanner.config import RATE_LIMITS, TIMEOUT
+    from osint_scanner.modules._utils import RateLimiter, sanitize_domain
 
 
 def _result(ip: str, error: str, data: dict = None) -> dict:
@@ -22,6 +26,10 @@ def _result(ip: str, error: str, data: dict = None) -> dict:
 
 
 def scan(domain: str) -> dict:
+    domain = sanitize_domain(domain)
+    if not domain:
+        return _result("", "Invalid domain name")
+
     limiter = RateLimiter(RATE_LIMITS["shodan"])
     try:
         ip = socket.gethostbyname(domain)

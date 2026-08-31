@@ -2,8 +2,12 @@
 
 import requests
 
-from osint_scanner.config import RATE_LIMITS, SUBDOMAIN_WORDLIST, TIMEOUT
-from osint_scanner.modules._utils import RateLimiter
+try:
+    from config import RATE_LIMITS, SUBDOMAIN_WORDLIST, TIMEOUT
+    from modules._utils import RateLimiter, sanitize_domain
+except ImportError:
+    from osint_scanner.config import RATE_LIMITS, SUBDOMAIN_WORDLIST, TIMEOUT
+    from osint_scanner.modules._utils import RateLimiter, sanitize_domain
 
 
 def _crt_sh(domain: str, limiter: RateLimiter) -> list:
@@ -11,6 +15,8 @@ def _crt_sh(domain: str, limiter: RateLimiter) -> list:
     limiter.wait()
     try:
         response = requests.get(url, timeout=TIMEOUT)
+        if response.status_code != 200:
+            return []
         entries = response.json()
     except Exception:
         return []
@@ -19,9 +25,11 @@ def _crt_sh(domain: str, limiter: RateLimiter) -> list:
     found = set()
     result = []
     for entry in entries:
+        if not isinstance(entry, dict):
+            continue
         names = (entry.get("name_value") or "").split("\n")
         for name in names:
-            name = name.strip()
+            name = name.strip().lower()
             if name.startswith("*"):
                 continue
             if not (name == domain or name.endswith("." + domain)):
@@ -45,7 +53,7 @@ def _brute_force(domain: str) -> list:
     resolver = dns.resolver.Resolver()
     resolver.lifetime = 2
     resolver.timeout = 2
-    limiter = RateLimiter(0.2)
+    limiter = RateLimiter(0.1)
     for word in words:
         host = f"{word}.{domain}"
         try:
@@ -58,6 +66,10 @@ def _brute_force(domain: str) -> list:
 
 
 def scan(domain: str) -> dict:
+    domain = sanitize_domain(domain)
+    if not domain:
+        return {"subdomains": [], "sources": {"crt_sh": [], "brute_force": []}, "error": "Invalid domain name"}
+
     limiter = RateLimiter(RATE_LIMITS["subdomains"])
     try:
         crt = _crt_sh(domain, limiter)

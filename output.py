@@ -7,7 +7,10 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
 
-from osint_scanner.config import OUTPUT_DIR
+try:
+    from config import OUTPUT_DIR
+except ImportError:
+    from osint_scanner.config import OUTPUT_DIR
 
 console = Console()
 
@@ -66,13 +69,14 @@ def render_console(domain: str, result: dict) -> None:
     console.print(Panel(table, title=f"[bold]{domain}[/]", border_style="cyan"))
 
 
-def write_json(scan_timestamp: str, results: dict) -> str:
+def write_json(scan_timestamp: str, results: list) -> str:
     """Write aggregated results to a timestamped JSON file. Returns the path."""
     payload = {
         "scan_timestamp": scan_timestamp,
         "domains": results,
     }
-    path = OUTPUT_DIR / f"osint_{scan_timestamp.replace(':', '').replace('-', '')}.json"
+    filename = f"osint_{scan_timestamp.replace(':', '').replace('-', '')}.json"
+    path = OUTPUT_DIR / filename
     path.write_text(json.dumps(payload, indent=2, default=str), encoding="utf-8")
     return str(path)
 

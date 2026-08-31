@@ -1,0 +1,11 @@
+{
+  "scan_timestamp": "2026-08-31T14:21:07.147773+00:00",
+  "domains": [
+    {
+      "domain": "test.com",
+      "whois": {
+        "registrar": "test"
+      }
+    }
+  ]
+}

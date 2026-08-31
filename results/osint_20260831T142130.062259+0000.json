@@ -1,0 +1,96 @@
+{
+  "scan_timestamp": "2026-08-31T14:21:30.062259+00:00",
+  "domains": [
+    {
+      "domain": "example.com",
+      "whois": {
+        "registrar": "RESERVED-Internet Assigned Numbers Authority",
+        "creation_date": "1995-08-14 04:00:00+00:00",
+        "expiration_date": "2027-08-13 04:00:00+00:00",
+        "name_servers": [
+          "ELLIOTT.NS.CLOUDFLARE.COM",
+          "HERA.NS.CLOUDFLARE.COM"
+        ],
+        "emails": [],
+        "error": "N/A"
+      },
+      "dns": {
+        "A": [
+          "172.66.147.243",
+          "104.20.23.154"
+        ],
+        "AAAA": [
+          "2606:4700:10::ac42:93f3",
+          "2606:4700:10::6814:179a"
+        ],
+        "MX": [
+          "0 ."
+        ],
+        "NS": [
+          "elliott.ns.cloudflare.com.",
+          "hera.ns.cloudflare.com."
+        ],
+        "TXT": [
+          "_k2n1y4vw3qtb4skdx9e7dxt97qrmmq9",
+          "v=spf1 -all"
+        ],
+        "CNAME": [],
+        "SOA": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2411783310 10000 2400 604800 1800",
+        "error": null
+      },
+      "geoip": {
+        "ip": "172.66.147.243",
+        "city": "Toronto",
+        "region": "Ontario",
+        "country": "Canada",
+        "lat": 43.6532,
+        "lon": -79.3832,
+        "isp": "Cloudflare, Inc.",
+        "org": "Cloudflare, Inc.",
+        "as": "AS13335 Cloudflare, Inc.",
+        "error": "N/A"
+      },
+      "shodan": {
+        "ip": "104.20.23.154",
+        "ports": [
+          8080,
+          2082,
+          2083,
+          2052,
+          2053,
+          2086,
+          2087,
+          2095,
+          80,
+          8880,
+          8443,
+          443
+        ],
+        "hostnames": [
+          "example.com"
+        ],
+        "vulns": [],
+        "org": "Cloudflare, Inc.",
+        "os": "N/A",
+        "error": "N/A"
+      },
+      "subdomains": {
+        "subdomains": [
+          "www.example.com"
+        ],
+        "sources": {
+          "crt_sh": [],
+          "brute_force": [
+            "www.example.com"
+          ]
+        },
+        "error": null
+      },
+      "leaks": {
+        "github_leaks": [],
+        "email_leaks": 0,
+        "error": null
+      }
+    }
+  ]
+}
