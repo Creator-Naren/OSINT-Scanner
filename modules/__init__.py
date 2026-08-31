@@ -1,6 +1,9 @@
-"""OSINT scanner package."""
+"""OSINT scanner module package."""
 
-from . import whois, dns, geoip, shodan, subdomains, leaks
+try:
+    from modules import whois, dns, geoip, shodan, subdomains, leaks
+except ImportError:
+    from . import whois, dns, geoip, shodan, subdomains, leaks
 
 MODULES = {
     "whois": whois.scan,

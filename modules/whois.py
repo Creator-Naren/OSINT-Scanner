@@ -1,18 +1,32 @@
 import whois
 
-from osint_scanner.config import RATE_LIMITS
-from osint_scanner.modules._utils import RateLimiter, safe_str
+try:
+    from config import RATE_LIMITS
+    from modules._utils import RateLimiter, safe_str, sanitize_domain
+except ImportError:
+    from osint_scanner.config import RATE_LIMITS
+    from osint_scanner.modules._utils import RateLimiter, safe_str, sanitize_domain
 
 
 def _as_list(value) -> list:
     if value is None:
         return []
     if isinstance(value, list):
-        return [str(v) for v in value]
+        return [str(v) for v in value if v is not None]
     return [str(value)]
 
 
 def scan(domain: str) -> dict:
+    domain = sanitize_domain(domain)
+    if not domain:
+        return {
+            "registrar": "N/A",
+            "creation_date": "N/A",
+            "expiration_date": "N/A",
+            "name_servers": [],
+            "emails": [],
+            "error": "Invalid domain name",
+        }
     limiter = RateLimiter(RATE_LIMITS["whois"])
     try:
         limiter.wait()

@@ -1,10 +1,18 @@
 import socket
 
-from osint_scanner.config import RATE_LIMITS
-from osint_scanner.modules._utils import RateLimiter, http_get
+try:
+    from config import RATE_LIMITS
+    from modules._utils import RateLimiter, http_get, sanitize_domain
+except ImportError:
+    from osint_scanner.config import RATE_LIMITS
+    from osint_scanner.modules._utils import RateLimiter, http_get, sanitize_domain
 
 
 def scan(domain: str) -> dict:
+    domain = sanitize_domain(domain)
+    if not domain:
+        return {"ip": "N/A", "city": "N/A", "region": "N/A", "country": "N/A", "lat": 0.0, "lon": 0.0, "isp": "N/A", "org": "N/A", "as": "N/A", "error": "Invalid domain name"}
+
     limiter = RateLimiter(RATE_LIMITS["geoip"])
     try:
         try:
@@ -14,7 +22,7 @@ def scan(domain: str) -> dict:
         resp = http_get(f"http://ip-api.com/json/{ip}?fields=status,message,country,regionName,city,lat,lon,isp,org,as", limiter)
         data = resp.json()
         if data.get("status") != "success":
-            return {"ip": "N/A", "city": "N/A", "region": "N/A", "country": "N/A", "lat": 0.0, "lon": 0.0, "isp": "N/A", "org": "N/A", "as": "N/A", "error": data.get("message", "geo lookup failed")}
+            return {"ip": ip, "city": "N/A", "region": "N/A", "country": "N/A", "lat": 0.0, "lon": 0.0, "isp": "N/A", "org": "N/A", "as": "N/A", "error": data.get("message", "geo lookup failed")}
         return {
             "ip": ip,
             "city": data.get("city", "N/A") or "N/A",
